@@ -1,3 +1,3 @@
 # namaste react
 
-"this is the learning project"
+"this is the learning project "
