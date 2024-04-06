@@ -1,12 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-const parent = React.createElement(
-  "div",
-  { id: "parent" },
-  React.createElement("div", { id: "child" }, [
-    React.createElement("h1", {}, "im heading h1"),
-    React.createElement("h2", {}, "im heading h2"),
-  ])
-);
+const jsxsyn = <h1 id="heading">heading from jsx</h1>;
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(parent);
+root.render(jsxsyn);
