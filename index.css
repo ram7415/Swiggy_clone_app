@@ -1,3 +1,31 @@
-#heading {
-  color: red;
+#container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+}
+
+.logo img {
+  width: 50px;
+}
+
+.search-bar input {
+  /* padding: 8px; */
+  border-radius: 5px;
+  border: none;
+  /* margin-right: 10px; */
+}
+
+.search-bar button {
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+}
+
+.user-icon img {
+  width: 30px;
 }
