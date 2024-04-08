@@ -1,28 +1,1130 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-const jsxsyn = <h1 id="heading">heading from jsx</h1>;
-const Title = () => (
-  <h1 className="head" tabIndex="5">
-    Heading from title
-  </h1>
-);
-const HeadingComponent = () => (
-  <div id="container">
-    <div className="Logo">
-      <img
-        style={{ alignItems: "center" }}
-        src="data:image/jpeg;base64,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"
-        alt="logo"
-      />
+
+/*header
+.logo
+.nav
+//body
+.container
+.card
+.*/
+const Header = () => {
+  return (
+    <div className="header">
+      <div className="logo-container">
+        <img
+          className="logo"
+          src="https://image.shutterstock.com/image-vector/chef-logo-design-restaurant-260nw-2139040385.jpg "
+          alt="logo"
+        />
+        <div className="nav-items">
+          <ul>
+            <li>Home</li>
+            <li>About Us</li>
+            <li>Contact Us</li>
+            <li>Cart</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <input type="text" className="search-bar" />
-    <button className="search-bar">submit</button>
-    <img
-      className="user-icon"
-      src="data:image/jpeg;base64,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"
-      alt="user"
-    />
-  </div>
-);
+  );
+};
+
+const RestaurentCard = (props) => {
+  const { resData } = props;
+
+  const {
+    name,
+    cuisines,
+    deliveryTime,
+    costForTwo,
+    cloudinaryImageId,
+    avgRating,
+  } = resData?.card.card.info;
+  return (
+    <div className="res-card">
+      <img
+        className="res-logo"
+        alt="res-logo"
+        src={
+          " https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
+          cloudinaryImageId
+        }
+      />
+      <h3>{name}</h3>
+      <h4>{cuisines.join(",")}</h4>
+      <h4>{resData.card.card.info.sla.deliveryTime}min</h4>
+      <h4>{costForTwo}</h4>
+      <h4>{avgRating}⭐</h4>
+    </div>
+  );
+};
+
+const resList = [
+  {
+    card: {
+      card: {
+        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
+        info: {
+          id: "746975",
+          name: "Haldiram's Restaurant",
+          cloudinaryImageId: "zj9yttzfhrlktwzc15mc",
+          locality: "Opp.C-21 Mall",
+          areaName: "Vijay Nagar",
+          costForTwo: "₹400 for two",
+          cuisines: [
+            "North Indian",
+            "South Indian",
+            "Biryani",
+            "Chinese",
+            "Chaat",
+            "Thalis",
+            "Bakery",
+            "Sweets",
+            "Beverages",
+            "Desserts",
+            "Snacks",
+            "Continental",
+            "Momos",
+            "Pastas",
+            "Burgers",
+          ],
+          avgRating: 4.2,
+          veg: true,
+          parentId: "351771",
+          avgRatingString: "4.2",
+          totalRatingsString: "1K+",
+          promoted: true,
+          adTrackingId:
+            "cid=12432595~p=1~eid=0000018e-bb97-0f19-379d-4a9700f9012a~srvts=1712544223001~80441~collid=80441",
+          sla: {
+            deliveryTime: 42,
+            lastMileTravel: 6.2,
+            serviceability: "SERVICEABLE",
+            slaString: "40-45 mins",
+            lastMileTravelString: "6.2 km",
+            iconType: "ICON_TYPE_EMPTY",
+          },
+          availability: {
+            nextCloseTime: "2024-04-09 00:00:00",
+            opened: true,
+          },
+          badges: {
+            imageBadges: [
+              {
+                imageId: "v1695133679/badges/Pure_Veg111.png",
+                description: "pureveg",
+              },
+            ],
+          },
+          isOpen: true,
+          type: "F",
+          badgesV2: {
+            entityBadges: {
+              imageBased: {
+                badgeObject: [
+                  {
+                    attributes: {
+                      imageId: "v1695133679/badges/Pure_Veg111.png",
+                      description: "pureveg",
+                    },
+                  },
+                ],
+              },
+              textExtendedBadges: {},
+              textBased: {},
+            },
+          },
+          aggregatedDiscountInfoV3: {
+            header: "₹125 OFF",
+            subHeader: "ABOVE ₹499",
+            discountTag: "FLAT DEAL",
+          },
+          orderabilityCommunication: {
+            title: {},
+            subTitle: {},
+            message: {},
+            customIcon: {},
+          },
+          differentiatedUi: {
+            displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+            differentiatedUiMediaDetails: {
+              mediaType: "ADS_MEDIA_ENUM_IMAGE",
+              lottie: {},
+              video: {},
+            },
+          },
+          reviewsSummary: {},
+          displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+          restaurantOfferPresentationInfo: {},
+          externalRatings: {
+            aggregatedRating: {
+              rating: "--",
+            },
+          },
+          ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+        },
+        analytics: {},
+        cta: {
+          link: "swiggy://menu?restaurant_id=746975&source=collection&query=Idli",
+          text: "RESTAURANT_MENU",
+          type: "DEEPLINK",
+        },
+        widgetId: "collectionV5RestaurantListWidget_SimRestoRelevance_food",
+      },
+      relevance: {
+        type: "RELEVANCE_TYPE_ON_MENU_RETURN",
+        sectionId: "MENU_RETURN_FOOD",
+      },
+    },
+  },
+  {
+    card: {
+      card: {
+        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
+        info: {
+          id: "97586",
+          name: "Shree Arti Sweets",
+          cloudinaryImageId: "rs2nyzce7u6m56o4vzn9",
+          locality: "Sapna Sangeeta",
+          areaName: "Sindhi Colony",
+          costForTwo: "₹350 for two",
+          cuisines: ["Sweets", "South Indian", "Chinese"],
+          avgRating: 4.3,
+          veg: true,
+          parentId: "184171",
+          avgRatingString: "4.3",
+          totalRatingsString: "500+",
+          promoted: true,
+          adTrackingId:
+            "cid=12358409~p=2~eid=0000018e-bb97-0f19-379d-4a9800f90254~srvts=1712544223001~80441~collid=80441",
+          sla: {
+            deliveryTime: 26,
+            lastMileTravel: 2.8,
+            serviceability: "SERVICEABLE",
+            slaString: "25-30 mins",
+            lastMileTravelString: "2.8 km",
+            iconType: "ICON_TYPE_EMPTY",
+          },
+          availability: {
+            nextCloseTime: "2024-04-08 22:30:00",
+            opened: true,
+          },
+          badges: {
+            imageBadges: [
+              {
+                imageId: "v1695133679/badges/Pure_Veg111.png",
+                description: "pureveg",
+              },
+            ],
+          },
+          isOpen: true,
+          type: "F",
+          badgesV2: {
+            entityBadges: {
+              textBased: {},
+              imageBased: {
+                badgeObject: [
+                  {
+                    attributes: {
+                      imageId: "v1695133679/badges/Pure_Veg111.png",
+                      description: "pureveg",
+                    },
+                  },
+                ],
+              },
+              textExtendedBadges: {},
+            },
+          },
+          aggregatedDiscountInfoV3: {
+            header: "10% OFF",
+            subHeader: "UPTO ₹40",
+          },
+          orderabilityCommunication: {
+            title: {},
+            subTitle: {},
+            message: {},
+            customIcon: {},
+          },
+          differentiatedUi: {
+            displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+            differentiatedUiMediaDetails: {
+              mediaType: "ADS_MEDIA_ENUM_IMAGE",
+              lottie: {},
+              video: {},
+            },
+          },
+          reviewsSummary: {},
+          displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+          restaurantOfferPresentationInfo: {},
+          externalRatings: {
+            aggregatedRating: {
+              rating: "--",
+            },
+          },
+          ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+        },
+        analytics: {},
+        cta: {
+          link: "swiggy://menu?restaurant_id=97586&source=collection&query=Idli",
+          text: "RESTAURANT_MENU",
+          type: "DEEPLINK",
+        },
+        widgetId: "collectionV5RestaurantListWidget_SimRestoRelevance_food",
+      },
+      relevance: {
+        type: "RELEVANCE_TYPE_ON_MENU_RETURN",
+        sectionId: "MENU_RETURN_FOOD",
+      },
+    },
+  },
+  {
+    card: {
+      card: {
+        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
+        info: {
+          id: "358308",
+          name: "Diet Dial",
+          cloudinaryImageId: "f6536cea5fd979e64a997a919150e881",
+          locality: "Jagjeevanram Nagar",
+          areaName: "Hig-Lig",
+          costForTwo: "₹250 for two",
+          cuisines: ["Healthy Food", "South Indian", "Pizzas"],
+          avgRating: 4.3,
+          veg: true,
+          parentId: "72510",
+          avgRatingString: "4.3",
+          totalRatingsString: "1K+",
+          promoted: true,
+          adTrackingId:
+            "cid=12356898~p=3~eid=0000018e-bb97-0f19-379d-4a9900f90343~srvts=1712544223001~80441~collid=80441",
+          sla: {
+            deliveryTime: 47,
+            lastMileTravel: 4.6,
+            serviceability: "SERVICEABLE",
+            slaString: "45-50 mins",
+            lastMileTravelString: "4.6 km",
+            iconType: "ICON_TYPE_EMPTY",
+          },
+          availability: {
+            nextCloseTime: "2024-04-08 23:00:00",
+            opened: true,
+          },
+          badges: {
+            imageBadges: [
+              {
+                imageId: "v1695133679/badges/Pure_Veg111.png",
+                description: "pureveg",
+              },
+            ],
+          },
+          isOpen: true,
+          type: "F",
+          badgesV2: {
+            entityBadges: {
+              textBased: {},
+              imageBased: {
+                badgeObject: [
+                  {
+                    attributes: {
+                      imageId: "v1695133679/badges/Pure_Veg111.png",
+                      description: "pureveg",
+                    },
+                  },
+                ],
+              },
+              textExtendedBadges: {},
+            },
+          },
+          aggregatedDiscountInfoV3: {
+            header: "20% OFF",
+            subHeader: "UPTO ₹50",
+          },
+          orderabilityCommunication: {
+            title: {},
+            subTitle: {},
+            message: {},
+            customIcon: {},
+          },
+          differentiatedUi: {
+            displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+            differentiatedUiMediaDetails: {
+              mediaType: "ADS_MEDIA_ENUM_IMAGE",
+              lottie: {},
+              video: {},
+            },
+          },
+          reviewsSummary: {},
+          displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+          restaurantOfferPresentationInfo: {},
+          externalRatings: {
+            aggregatedRating: {
+              rating: "--",
+            },
+          },
+          ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+        },
+        analytics: {},
+        cta: {
+          link: "swiggy://menu?restaurant_id=358308&source=collection&query=Idli",
+          text: "RESTAURANT_MENU",
+          type: "DEEPLINK",
+        },
+        widgetId: "collectionV5RestaurantListWidget_SimRestoRelevance_food",
+      },
+      relevance: {
+        type: "RELEVANCE_TYPE_ON_MENU_RETURN",
+        sectionId: "MENU_RETURN_FOOD",
+      },
+    },
+  },
+  {
+    card: {
+      card: {
+        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
+        info: {
+          id: "604322",
+          name: "Mr Anna by Maa ki Rasoi",
+          cloudinaryImageId: "9e58e6eee8806a706dde5dd1f1d17ac6",
+          locality: "Gopur Colony",
+          areaName: "Sudama Nagar",
+          costForTwo: "₹300 for two",
+          cuisines: [
+            "South Indian",
+            "Fast Food",
+            "North Indian",
+            "Biryani",
+            "Chinese",
+            "Snacks",
+          ],
+          avgRating: 4.3,
+          veg: true,
+          parentId: "360199",
+          avgRatingString: "4.3",
+          totalRatingsString: "1K+",
+          promoted: true,
+          adTrackingId:
+            "cid=12391545~p=4~eid=0000018e-bb97-0f19-379d-4a9a00f90427~srvts=1712544223001~80441~collid=80441",
+          sla: {
+            deliveryTime: 47,
+            lastMileTravel: 5.8,
+            serviceability: "SERVICEABLE",
+            slaString: "45-50 mins",
+            lastMileTravelString: "5.8 km",
+            iconType: "ICON_TYPE_EMPTY",
+          },
+          availability: {
+            nextCloseTime: "2024-04-08 23:59:00",
+            opened: true,
+          },
+          badges: {
+            imageBadges: [
+              {
+                imageId: "v1695133679/badges/Pure_Veg111.png",
+                description: "pureveg",
+              },
+            ],
+          },
+          isOpen: true,
+          type: "F",
+          badgesV2: {
+            entityBadges: {
+              imageBased: {
+                badgeObject: [
+                  {
+                    attributes: {
+                      description: "pureveg",
+                      imageId: "v1695133679/badges/Pure_Veg111.png",
+                    },
+                  },
+                ],
+              },
+              textExtendedBadges: {},
+              textBased: {},
+            },
+          },
+          aggregatedDiscountInfoV3: {
+            header: "40% OFF",
+            discountTag: "FLAT DEAL",
+          },
+          orderabilityCommunication: {
+            title: {},
+            subTitle: {},
+            message: {},
+            customIcon: {},
+          },
+          differentiatedUi: {
+            displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+            differentiatedUiMediaDetails: {
+              mediaType: "ADS_MEDIA_ENUM_IMAGE",
+              lottie: {},
+              video: {},
+            },
+          },
+          reviewsSummary: {},
+          displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+          restaurantOfferPresentationInfo: {},
+          externalRatings: {
+            aggregatedRating: {
+              rating: "--",
+            },
+          },
+          ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+        },
+        analytics: {},
+        cta: {
+          link: "swiggy://menu?restaurant_id=604322&source=collection&query=Idli",
+          text: "RESTAURANT_MENU",
+          type: "DEEPLINK",
+        },
+        widgetId: "collectionV5RestaurantListWidget_SimRestoRelevance_food",
+      },
+      relevance: {
+        type: "RELEVANCE_TYPE_ON_MENU_RETURN",
+        sectionId: "MENU_RETURN_FOOD",
+      },
+    },
+  },
+  {
+    card: {
+      card: {
+        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
+        info: {
+          id: "319443",
+          name: "JMB Pipliyahana ",
+          cloudinaryImageId: "zkqasn0hzybnzy7au83i",
+          locality: "Greater Brajeshwari",
+          areaName: "Pipliyahana",
+          costForTwo: "₹200 for two",
+          cuisines: ["North Indian"],
+          avgRating: 4.5,
+          veg: true,
+          parentId: "111184",
+          avgRatingString: "4.5",
+          totalRatingsString: "1K+",
+          promoted: true,
+          adTrackingId:
+            "cid=12427399~p=5~eid=0000018e-bb97-0f19-379d-4a9b00f90569~srvts=1712544223001~80441~collid=80441",
+          sla: {
+            deliveryTime: 36,
+            lastMileTravel: 6.4,
+            serviceability: "SERVICEABLE",
+            slaString: "35-40 mins",
+            lastMileTravelString: "6.4 km",
+            iconType: "ICON_TYPE_EMPTY",
+          },
+          availability: {
+            nextCloseTime: "2024-04-08 22:30:00",
+            opened: true,
+          },
+          badges: {
+            imageBadges: [
+              {
+                imageId: "v1695133679/badges/Pure_Veg111.png",
+                description: "pureveg",
+              },
+            ],
+          },
+          isOpen: true,
+          type: "F",
+          badgesV2: {
+            entityBadges: {
+              textBased: {},
+              imageBased: {
+                badgeObject: [
+                  {
+                    attributes: {
+                      imageId: "v1695133679/badges/Pure_Veg111.png",
+                      description: "pureveg",
+                    },
+                  },
+                ],
+              },
+              textExtendedBadges: {},
+            },
+          },
+          aggregatedDiscountInfoV3: {
+            header: "20% OFF",
+            subHeader: "ABOVE ₹650",
+            discountTag: "FLAT DEAL",
+          },
+          orderabilityCommunication: {
+            title: {},
+            subTitle: {},
+            message: {},
+            customIcon: {},
+          },
+          differentiatedUi: {
+            displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+            differentiatedUiMediaDetails: {
+              mediaType: "ADS_MEDIA_ENUM_IMAGE",
+              lottie: {},
+              video: {},
+            },
+          },
+          reviewsSummary: {},
+          displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+          restaurantOfferPresentationInfo: {},
+          externalRatings: {
+            aggregatedRating: {
+              rating: "--",
+            },
+          },
+          ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+        },
+        analytics: {},
+        cta: {
+          link: "swiggy://menu?restaurant_id=319443&source=collection&query=Idli",
+          text: "RESTAURANT_MENU",
+          type: "DEEPLINK",
+        },
+        widgetId: "collectionV5RestaurantListWidget_SimRestoRelevance_food",
+      },
+      relevance: {
+        type: "RELEVANCE_TYPE_ON_MENU_RETURN",
+        sectionId: "MENU_RETURN_FOOD",
+      },
+    },
+  },
+  {
+    card: {
+      card: {
+        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
+        info: {
+          id: "726492",
+          name: "Indian Coffee House",
+          cloudinaryImageId: "424644fac938129065f416b7cfb9d612",
+          locality: "MG Road",
+          areaName: "Sarafa",
+          costForTwo: "₹300 for two",
+          cuisines: ["South Indian", "North Indian", "Biryani", "Beverages"],
+          avgRating: 4.5,
+          parentId: "106448",
+          avgRatingString: "4.5",
+          totalRatingsString: "100+",
+          sla: {
+            deliveryTime: 35,
+            lastMileTravel: 1.6,
+            serviceability: "SERVICEABLE",
+            slaString: "35-40 mins",
+            lastMileTravelString: "1.6 km",
+            iconType: "ICON_TYPE_EMPTY",
+          },
+          availability: {
+            nextCloseTime: "2024-04-08 22:30:00",
+            opened: true,
+          },
+          badges: {
+            imageBadges: [
+              {
+                imageId: "Rxawards/_CATEGORY-South%20Indian.png",
+                description: "Delivery!",
+              },
+            ],
+          },
+          isOpen: true,
+          aggregatedDiscountInfoV2: {},
+          type: "F",
+          badgesV2: {
+            entityBadges: {
+              textBased: {},
+              imageBased: {
+                badgeObject: [
+                  {
+                    attributes: {
+                      imageId: "Rxawards/_CATEGORY-South%20Indian.png",
+                      description: "Delivery!",
+                    },
+                  },
+                ],
+              },
+              textExtendedBadges: {},
+            },
+          },
+          orderabilityCommunication: {
+            title: {},
+            subTitle: {},
+            message: {},
+            customIcon: {},
+          },
+          differentiatedUi: {
+            displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+            differentiatedUiMediaDetails: {
+              mediaType: "ADS_MEDIA_ENUM_IMAGE",
+              lottie: {},
+              video: {},
+            },
+          },
+          reviewsSummary: {},
+          displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+          restaurantOfferPresentationInfo: {},
+          externalRatings: {
+            aggregatedRating: {
+              rating: "--",
+            },
+          },
+          ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+        },
+        analytics: {},
+        cta: {
+          link: "swiggy://menu?restaurant_id=726492&source=collection&query=Idli",
+          text: "RESTAURANT_MENU",
+          type: "DEEPLINK",
+        },
+        widgetId: "collectionV5RestaurantListWidget_SimRestoRelevance_food",
+      },
+      relevance: {
+        type: "RELEVANCE_TYPE_ON_MENU_RETURN",
+        sectionId: "MENU_RETURN_FOOD",
+      },
+    },
+  },
+  {
+    card: {
+      card: {
+        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
+        info: {
+          id: "181385",
+          name: "Young Tarang",
+          cloudinaryImageId: "1e76213f1e20dd0a7d7de55a30a93bc5",
+          locality: "New Palasia",
+          areaName: "New Palasia",
+          costForTwo: "₹200 for two",
+          cuisines: [
+            "South Indian",
+            "Chinese",
+            "Snacks",
+            "North Indian",
+            "Chaat",
+          ],
+          avgRating: 4.1,
+          parentId: "228245",
+          avgRatingString: "4.1",
+          totalRatingsString: "10K+",
+          sla: {
+            deliveryTime: 30,
+            lastMileTravel: 3,
+            serviceability: "SERVICEABLE",
+            slaString: "30-35 mins",
+            lastMileTravelString: "3.0 km",
+            iconType: "ICON_TYPE_EMPTY",
+          },
+          availability: {
+            nextCloseTime: "2024-04-09 00:00:00",
+            opened: true,
+          },
+          badges: {
+            imageBadges: [
+              {
+                imageId: "v1695133679/badges/Pure_Veg111.png",
+                description: "pureveg",
+              },
+            ],
+          },
+          isOpen: true,
+          type: "F",
+          badgesV2: {
+            entityBadges: {
+              imageBased: {
+                badgeObject: [
+                  {
+                    attributes: {
+                      imageId: "v1695133679/badges/Pure_Veg111.png",
+                      description: "pureveg",
+                    },
+                  },
+                ],
+              },
+              textExtendedBadges: {},
+              textBased: {},
+            },
+          },
+          aggregatedDiscountInfoV3: {
+            header: "₹100 OFF",
+            subHeader: "ABOVE ₹249",
+            discountTag: "FLAT DEAL",
+            discountCalloutInfo: {
+              message: "Free Delivery",
+              logoCtx: {
+                logo: "v1655895371/free_delivery_logo_hqipbo.png",
+              },
+            },
+          },
+          orderabilityCommunication: {
+            title: {},
+            subTitle: {},
+            message: {},
+            customIcon: {},
+          },
+          differentiatedUi: {
+            displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+            differentiatedUiMediaDetails: {
+              mediaType: "ADS_MEDIA_ENUM_IMAGE",
+              lottie: {},
+              video: {},
+            },
+          },
+          reviewsSummary: {},
+          displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+          restaurantOfferPresentationInfo: {},
+          externalRatings: {
+            aggregatedRating: {
+              rating: "3.7",
+              ratingCount: "100+",
+            },
+            source: "GOOGLE",
+            sourceIconImageId: "v1704440323/google_ratings/rating_google_tag",
+          },
+          ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+        },
+        analytics: {},
+        cta: {
+          link: "swiggy://menu?restaurant_id=181385&source=collection&query=Idli",
+          text: "RESTAURANT_MENU",
+          type: "DEEPLINK",
+        },
+        widgetId: "collectionV5RestaurantListWidget_SimRestoRelevance_food",
+      },
+      relevance: {
+        type: "RELEVANCE_TYPE_ON_MENU_RETURN",
+        sectionId: "MENU_RETURN_FOOD",
+      },
+    },
+  },
+  {
+    card: {
+      card: {
+        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
+        info: {
+          id: "68410",
+          name: "Idli Hut",
+          cloudinaryImageId: "ljet7efxesxfnggohil4",
+          locality: "Vatsalya Chambers",
+          areaName: "Sapna Sangeeta Road",
+          costForTwo: "₹200 for two",
+          cuisines: ["South Indian", "Indian", "Beverages", "Chinese"],
+          avgRating: 4.3,
+          veg: true,
+          parentId: "105875",
+          avgRatingString: "4.3",
+          totalRatingsString: "1K+",
+          sla: {
+            deliveryTime: 27,
+            lastMileTravel: 3,
+            serviceability: "SERVICEABLE",
+            slaString: "25-30 mins",
+            lastMileTravelString: "3.0 km",
+            iconType: "ICON_TYPE_EMPTY",
+          },
+          availability: {
+            nextCloseTime: "2024-04-09 03:00:00",
+            opened: true,
+          },
+          badges: {
+            imageBadges: [
+              {
+                imageId: "v1695133679/badges/Pure_Veg111.png",
+                description: "pureveg",
+              },
+            ],
+          },
+          isOpen: true,
+          type: "F",
+          badgesV2: {
+            entityBadges: {
+              textExtendedBadges: {},
+              textBased: {},
+              imageBased: {
+                badgeObject: [
+                  {
+                    attributes: {
+                      imageId: "v1695133679/badges/Pure_Veg111.png",
+                      description: "pureveg",
+                    },
+                  },
+                ],
+              },
+            },
+          },
+          aggregatedDiscountInfoV3: {
+            header: "₹100 OFF",
+            subHeader: "ABOVE ₹249",
+            discountTag: "FLAT DEAL",
+            discountCalloutInfo: {
+              message: "Free Delivery",
+              logoCtx: {
+                logo: "v1655895371/free_delivery_logo_hqipbo.png",
+              },
+            },
+          },
+          orderabilityCommunication: {
+            title: {},
+            subTitle: {},
+            message: {},
+            customIcon: {},
+          },
+          differentiatedUi: {
+            displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+            differentiatedUiMediaDetails: {
+              mediaType: "ADS_MEDIA_ENUM_IMAGE",
+              lottie: {},
+              video: {},
+            },
+          },
+          reviewsSummary: {},
+          displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+          restaurantOfferPresentationInfo: {},
+          externalRatings: {
+            aggregatedRating: {
+              rating: "--",
+            },
+          },
+          ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+        },
+        analytics: {},
+        cta: {
+          link: "swiggy://menu?restaurant_id=68410&source=collection&query=Idli",
+          text: "RESTAURANT_MENU",
+          type: "DEEPLINK",
+        },
+        widgetId: "collectionV5RestaurantListWidget_SimRestoRelevance_food",
+      },
+      relevance: {
+        type: "RELEVANCE_TYPE_ON_MENU_RETURN",
+        sectionId: "MENU_RETURN_FOOD",
+      },
+    },
+  },
+  {
+    card: {
+      card: {
+        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
+        info: {
+          id: "227376",
+          name: "Prashant Nashta Corner",
+          cloudinaryImageId: "vctoopafxqta7n1bvjbh",
+          locality: "Geeta Bhavan",
+          areaName: "Tukoganj",
+          costForTwo: "₹150 for two",
+          cuisines: ["Fast Food", "South Indian", "North Indian", "Snacks"],
+          avgRating: 4.1,
+          parentId: "160688",
+          avgRatingString: "4.1",
+          totalRatingsString: "500+",
+          sla: {
+            deliveryTime: 32,
+            lastMileTravel: 3.6,
+            serviceability: "SERVICEABLE",
+            slaString: "30-35 mins",
+            lastMileTravelString: "3.6 km",
+            iconType: "ICON_TYPE_EMPTY",
+          },
+          availability: {
+            nextCloseTime: "2024-04-08 19:00:00",
+            opened: true,
+          },
+          badges: {
+            imageBadges: [
+              {
+                imageId: "v1695133679/badges/Pure_Veg111.png",
+                description: "pureveg",
+              },
+            ],
+          },
+          isOpen: true,
+          aggregatedDiscountInfoV2: {},
+          type: "F",
+          badgesV2: {
+            entityBadges: {
+              textExtendedBadges: {},
+              textBased: {},
+              imageBased: {
+                badgeObject: [
+                  {
+                    attributes: {
+                      imageId: "v1695133679/badges/Pure_Veg111.png",
+                      description: "pureveg",
+                    },
+                  },
+                ],
+              },
+            },
+          },
+          orderabilityCommunication: {
+            title: {},
+            subTitle: {},
+            message: {},
+            customIcon: {},
+          },
+          differentiatedUi: {
+            displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+            differentiatedUiMediaDetails: {
+              mediaType: "ADS_MEDIA_ENUM_IMAGE",
+              lottie: {},
+              video: {},
+            },
+          },
+          reviewsSummary: {},
+          displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+          restaurantOfferPresentationInfo: {},
+          externalRatings: {
+            aggregatedRating: {
+              rating: "--",
+            },
+          },
+          ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+        },
+        analytics: {},
+        cta: {
+          link: "swiggy://menu?restaurant_id=227376&source=collection&query=Idli",
+          text: "RESTAURANT_MENU",
+          type: "DEEPLINK",
+        },
+        widgetId: "collectionV5RestaurantListWidget_SimRestoRelevance_food",
+      },
+      relevance: {
+        type: "RELEVANCE_TYPE_ON_MENU_RETURN",
+        sectionId: "MENU_RETURN_FOOD",
+      },
+    },
+  },
+  {
+    card: {
+      card: {
+        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
+        info: {
+          id: "64103",
+          name: "Mitti - Organic. Fresh. Desi.",
+          cloudinaryImageId: "sncym73sdcgmtinvbvw6",
+          locality: "Old Palasia",
+          areaName: "Old Palasia",
+          costForTwo: "₹300 for two",
+          cuisines: [
+            "Thalis",
+            "North Indian",
+            "South Indian",
+            "Salads",
+            "Punjabi",
+            "Snacks",
+            "Healthy Food",
+          ],
+          avgRating: 4.5,
+          parentId: "230868",
+          avgRatingString: "4.5",
+          totalRatingsString: "10K+",
+          sla: {
+            deliveryTime: 35,
+            lastMileTravel: 4,
+            serviceability: "SERVICEABLE",
+            slaString: "30-35 mins",
+            lastMileTravelString: "4.0 km",
+            iconType: "ICON_TYPE_EMPTY",
+          },
+          availability: {
+            nextCloseTime: "2024-04-08 23:30:00",
+            opened: true,
+          },
+          badges: {
+            imageBadges: [
+              {
+                imageId: "newg.png",
+                description: "Gourmet",
+              },
+              {
+                imageId: "v1695133679/badges/Pure_Veg111.png",
+                description: "pureveg",
+              },
+            ],
+          },
+          isOpen: true,
+          aggregatedDiscountInfoV2: {},
+          type: "F",
+          badgesV2: {
+            entityBadges: {
+              textBased: {},
+              imageBased: {
+                badgeObject: [
+                  {
+                    attributes: {
+                      imageId: "newg.png",
+                      description: "Gourmet",
+                    },
+                  },
+                  {
+                    attributes: {
+                      imageId: "v1695133679/badges/Pure_Veg111.png",
+                      description: "pureveg",
+                    },
+                  },
+                ],
+              },
+              textExtendedBadges: {},
+            },
+          },
+          orderabilityCommunication: {
+            title: {},
+            subTitle: {},
+            message: {},
+            customIcon: {},
+          },
+          differentiatedUi: {
+            displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+            differentiatedUiMediaDetails: {
+              mediaType: "ADS_MEDIA_ENUM_IMAGE",
+              lottie: {},
+              video: {},
+            },
+          },
+          reviewsSummary: {},
+          displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+          restaurantOfferPresentationInfo: {},
+          externalRatings: {
+            aggregatedRating: {
+              rating: "4.1",
+              ratingCount: "1K+",
+            },
+            source: "GOOGLE",
+            sourceIconImageId: "v1704440323/google_ratings/rating_google_tag",
+          },
+          ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+        },
+        analytics: {},
+        cta: {
+          link: "swiggy://menu?restaurant_id=64103&source=collection&query=Idli",
+          text: "RESTAURANT_MENU",
+          type: "DEEPLINK",
+        },
+        widgetId: "collectionV5RestaurantListWidget_SimRestoRelevance_food",
+      },
+      relevance: {
+        type: "RELEVANCE_TYPE_ON_MENU_RETURN",
+        sectionId: "MENU_RETURN_FOOD",
+      },
+    },
+  },
+];
+const Body = () => {
+  return (
+    <div className="body">
+      <div className="search">Search</div>
+      <div className="res-container">
+        {resList.map((resaturent) => (
+          <RestaurentCard
+            key={resaturent.card.card.info.id}
+            resData={resaturent}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+const Applayout = () => {
+  return (
+    <div className="layout">
+      <Header />
+      <Body />
+    </div>
+  );
+};
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<HeadingComponent />);
+root.render(<Applayout />);
