@@ -27,7 +27,7 @@
 .res-card {
   width: 250px;
   margin-top: 5px;
-
+  cursor: pointer;
   /* height: 400px; */
   padding: 3px;
   margin: 12px;
@@ -43,4 +43,9 @@
 .res-container {
   display: flex;
   flex-wrap: wrap;
+}
+
+.filterBtn {
+  cursor: pointer;
+  margin: 10px;
 }
