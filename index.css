@@ -11,7 +11,7 @@
 .nav-items > ul {
   display: flex;
   list-style-type: none;
-  margin-left: 70rem;
+  margin-left: 400px;
   font-size: 20px;
 }
 
@@ -31,6 +31,12 @@
   /* height: 400px; */
   padding: 3px;
   margin: 12px;
+  overflow-wrap: break-word;
+  background-color: rgb(246, 244, 239);
+}
+
+.res-card img {
+  max-width: 100%;
 }
 .res-card:hover {
   border: 1px solid black;
@@ -48,4 +54,28 @@
 .filterBtn {
   cursor: pointer;
   margin: 10px;
+}
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.shimmer-card {
+  margin: 20px;
+  width: 200px;
+  height: 400px;
+  background-color: rgb(241, 228, 228);
+}
+.loginBtn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid #4caf50; /* Green border */
+  color: #ffffff; /* White text */
+  background-color: #4caf50; /* Green background */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
