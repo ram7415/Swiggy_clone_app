@@ -1,5 +1,7 @@
+import useOnlineStatus from "../utils/useOnlineStatus";
 import RestaurentCard from "./RestaurentCard";
 // import resList from "../utils/mockData";
+import useOnlineStatus from "../utils/useOnlineStatus";
 import Shimmer from "./Shimmer";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -68,10 +70,11 @@ const Body = () => {
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilterRestaurant(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
-
+  const onlineStatus = useOnlineStatus();
+  if (onlineStatus === false) return <h1>No Internet Connection</h1>;
   ///this is condtional rendering
   // if  (ListofRestaurents.length === 0){
   //   return <Shimmer />;
