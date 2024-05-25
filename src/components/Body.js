@@ -83,41 +83,45 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="filter">
-        <input
-          type="text"
-          className="search-box"
-          value={searchBox}
-          onChange={(e) => {
-            setSearchBox(e.target.value);
-          }}
-        />
-        <button
-          onClick={() => {
-            const filterRestauraants = ListofRestaurents.filter((res) => {
-              return res.info.name
-                .toLowerCase()
-                .includes(searchBox.toLowerCase());
-            });
-            setFilterRestaurant(filterRestauraants);
-          }}
-        >
-          Search
-        </button>
-        <button
-          className="filterBtn"
-          onClick={() => {
-            const filterList = ListofRestaurents.filter(
-              (res) => res.info.avgRating > 4
-            );
-            setFilterRestaurant(filterList);
-            console.log(ListofRestaurents);
-          }}
-        >
-          Top Rated Restaurant
-        </button>
+      <div className="filter flex">
+        <div className=" search m-4 p-4">
+          <input
+            type="text"
+            className="border border-solid border-black"
+            value={searchBox}
+            onChange={(e) => {
+              setSearchBox(e.target.value);
+            }}
+          />
+          <button
+            className="px-4 py-2 bg-green-100 m-4 rounded-lg"
+            onClick={() => {
+              const filterRestauraants = ListofRestaurents.filter((res) => {
+                return res.info.name
+                  .toLowerCase()
+                  .includes(searchBox.toLowerCase());
+              });
+              setFilterRestaurant(filterRestauraants);
+            }}
+          >
+            Search
+          </button>
+
+          <button
+            className="px-4 py-2 bg-gray-100 rounded-lg"
+            onClick={() => {
+              const filterList = ListofRestaurents.filter(
+                (res) => res.info.avgRating > 4
+              );
+              setFilterRestaurant(filterList);
+              console.log(ListofRestaurents);
+            }}
+          >
+            Top Rated Restaurant
+          </button>
+        </div>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap  ">
         {filterRestaurant.map((restaurent) => (
           <Link
             to={"/restaurants/" + restaurent.info.id}
