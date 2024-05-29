@@ -9,7 +9,7 @@ const Body = () => {
   const [ListofRestaurents, setListofRestaurents] = useState([]);
   const [searchBox, setSearchBox] = useState("");
   const [filterRestaurant, setFilterRestaurant] = useState([]);
-
+  console.log("list", ListofRestaurents);
   // let ListofRestaurents = [
   //   {
   //     card: {
