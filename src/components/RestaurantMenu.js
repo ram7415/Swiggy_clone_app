@@ -9,6 +9,9 @@ const RestaurantMenu = () => {
   console.log(resId);
 
   const resInfo = useRestaurantMenu(resId);
+
+  const [showIndex, setShowIndex] = useState(0);
+
   if (resInfo === null) return <Shimmer />;
 
   const { name, cuisines, costForTwoMessage } =
@@ -43,8 +46,12 @@ const RestaurantMenu = () => {
         {cuisines.join(",")}-{costForTwoMessage}
       </p>
       {/* categories accordian */}
-      {categories.map((category) => (
-        <RestaurantCategory data={category?.card?.card} />
+      {categories.map((category, index) => (
+        <RestaurantCategory
+          // key={category?.card?.card.}
+          data={category?.card?.card}
+          showItems={index === showIndex && true}
+        />
       ))}
     </div>
   );
