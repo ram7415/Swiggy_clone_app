@@ -29,9 +29,6 @@ const Header = () => {
             <Link to="/Grocery">Grocery</Link>
           </li>
           <li className="px-4">
-            <Link to="/">hiii</Link>
-          </li>
-          <li className="px-4">
             <Link to="/">Cart</Link>
           </li>{" "}
           <button
@@ -44,6 +41,9 @@ const Header = () => {
           >
             {loginBtn}
           </button>
+          <li className="px-4">
+            <Link to="/">{loggedInUser}</Link>
+          </li>
         </ul>
       </div>
     </div>

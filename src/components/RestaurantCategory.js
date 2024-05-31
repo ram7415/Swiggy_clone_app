@@ -5,8 +5,9 @@ const RestaurantCategory = ({ data, showItems, setShowIndex }) => {
   const [showItem, setShowItem] = useState(false);
   console.log(data);
   const handleClick = () => {
-    // setShowItem(!showItem);
     setShowIndex();
+    setShowItem(!showItem);
+    console.log(showItem);
   };
 
   return (

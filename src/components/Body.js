@@ -3,13 +3,15 @@ import RestaurentCard from "./RestaurentCard";
 // import resList from "../utils/mockData";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import Shimmer from "./Shimmer";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import UserContext from "../utils/UserContext";
 const Body = () => {
   const [ListofRestaurents, setListofRestaurents] = useState([]);
   const [searchBox, setSearchBox] = useState("");
   const [filterRestaurant, setFilterRestaurant] = useState([]);
   console.log("list", ListofRestaurents);
+  const { loggedInUser } = useContext(UserContext);
   // let ListofRestaurents = [
   //   {
   //     card: {
@@ -123,6 +125,7 @@ const Body = () => {
           </button>
         </div>
       </div>
+      <span>Sample of usecontext-{loggedInUser}</span>
       <div className="flex flex-wrap  ">
         {filterRestaurant.map((restaurent) => (
           <Link
