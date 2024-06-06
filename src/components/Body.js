@@ -88,40 +88,35 @@ const Body = () => {
   ) : (
     <div className="body ">
       <div className="filter flex">
-        <div className=" search m-4 p-4">
+        <div className="search flex items-center m-4 p-4 bg-[#FFEEA9] rounded-lg shadow-md">
           <input
             type="text"
-            className="border border-solid border-black"
+            className="border border-solid border-black rounded-lg p-2 flex-grow outline-none"
+            placeholder="Search restaurants..."
             value={searchBox}
-            onChange={(e) => {
-              setSearchBox(e.target.value);
-            }}
+            onChange={(e) => setSearchBox(e.target.value)}
           />
           <button
-            className="px-4 py-2 bg-green-100 m-4 rounded-lg"
+            className="px-4 py-2 bg-[#FF7D29] text-white rounded-lg ml-4 hover:bg-[#FF5722]"
             onClick={() => {
-              const filterRestauraants = ListofRestaurents.filter((res) => {
-                return res.info.name
-                  .toLowerCase()
-                  .includes(searchBox.toLowerCase());
-              });
+              const filterRestauraants = ListofRestaurents.filter((res) =>
+                res.info.name.toLowerCase().includes(searchBox.toLowerCase())
+              );
               setFilterRestaurant(filterRestauraants);
             }}
           >
             Search
           </button>
-
           <button
-            className="px-4 py-2 bg-gray-100 rounded-lg"
+            className="px-4 py-2 bg-[#FFBF78] text-white rounded-lg ml-4 hover:bg-[#FFAB60]"
             onClick={() => {
               const filterList = ListofRestaurents.filter(
                 (res) => res.info.avgRating > 4
               );
               setFilterRestaurant(filterList);
-              console.log(ListofRestaurents);
             }}
           >
-            Top Rated Restaurant
+            Top Rated
           </button>
         </div>
       </div>
