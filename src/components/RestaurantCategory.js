@@ -13,7 +13,7 @@ const RestaurantCategory = ({ data, showItems, setShowIndex }) => {
   return (
     <div>
       {/* acodian header */}
-      <div className="w-6/12 mx-auto my-4 bg-gray-100 shadow-lg p-4  ">
+      <div className="w-7/12 mx-auto my-4 bg-gray-100 shadow-lg p-4  ">
         <div
           className="flex justify-between cursor-pointer"
           onClick={handleClick}

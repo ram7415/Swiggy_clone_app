@@ -38,6 +38,16 @@ const products = [
 ];
 
 const Grocery = () => {
+  const apiData = async () => {
+    try {
+      let response = await fetch("https://fakestoreapi.com/products/1");
+      let json = await response.json();
+      console.log("son", json);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  apiData();
   return (
     <div className="min-h-screen bg-[#FEFFD2] text-[#FF7D29]">
       <div className="container mx-auto py-12 px-6">

@@ -11,6 +11,7 @@ import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
+import Footer from "./components/Footer";
 // import Grocery from "./components/Grocery";
 //Chunking
 //Lazy Loading
@@ -40,6 +41,7 @@ const Applayout = () => {
           <Header />
         </UserContext.Provider>
         <Outlet />
+        <Footer />
       </div>
     </Provider>
   );

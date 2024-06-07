@@ -6,59 +6,14 @@ import Shimmer from "./Shimmer";
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
+import { CiSearch } from "react-icons/ci";
 const Body = () => {
   const [ListofRestaurents, setListofRestaurents] = useState([]);
   const [searchBox, setSearchBox] = useState("");
   const [filterRestaurant, setFilterRestaurant] = useState([]);
   console.log("list", ListofRestaurents);
   const { loggedInUser } = useContext(UserContext);
-  // let ListofRestaurents = [
-  //   {
-  //     card: {
-  //       id: "604322",
-  //       name: "Mr Anna by Maa ki Rasoi",
-  //       cloudinaryImageId: "9e58e6eee8806a706dde5dd1f1d17ac6",
-  //       locality: "Gopur Colony",
-  //       areaName: "Sudama Nagar",
-  //       costForTwo: "₹300 for two",
-  //       cuisines: [
-  //         "South Indian",
-  //         "Fast Food",
-  //         "North Indian",
-  //         "Biryani",
-  //         "Chinese",
-  //         "Snacks",
-  //       ],
-  //       avgRating: 3.5,
 
-  //       avgRatingString: "4.3",
-  //       totalRatingsString: "1K+",
-
-  //       deliveryTime: 47,
-  //     },
-  //   },
-  //   {
-  //     card: {
-  //       id: "604321",
-  //       name: "KFC",
-  //       cloudinaryImageId: "9e58e6eee8806a706dde5dd1f1d17ac6",
-  //       locality: "Gopur Colony",
-  //       areaName: "Sudama Nagar",
-  //       costForTwo: "₹300 for two",
-  //       cuisines: [
-  //         "South Indian",
-  //         "Fast Food",
-  //         "North Indian",
-  //         "Biryani",
-  //         "Chinese",
-  //         "Snacks",
-  //       ],
-  //       avgRating: 4.3,
-
-  //       deliveryTime: 47,
-  //     },
-  //   },
-  // ];
   useEffect(() => {
     fetchData();
   }, []);
@@ -88,7 +43,7 @@ const Body = () => {
   ) : (
     <div className="body ">
       <div className="filter flex">
-        <div className="search flex items-center m-4 p-4 bg-[#FFEEA9] rounded-lg shadow-md">
+        <div className="search flex items-center m-4 p-4 bg-[#efeeeb] rounded-lg shadow-md">
           <input
             type="text"
             className="border border-solid border-black rounded-lg p-2 flex-grow outline-none"
@@ -97,7 +52,7 @@ const Body = () => {
             onChange={(e) => setSearchBox(e.target.value)}
           />
           <button
-            className="px-4 py-2 bg-[#FF7D29] text-white rounded-lg ml-4 hover:bg-[#FF5722]"
+            className="px-4 py-2 text-xl bg-[#ffffff] text-black rounded-lg ml-4 hover:bg-[#dccbc6] hover:text-2xl"
             onClick={() => {
               const filterRestauraants = ListofRestaurents.filter((res) =>
                 res.info.name.toLowerCase().includes(searchBox.toLowerCase())
@@ -105,10 +60,10 @@ const Body = () => {
               setFilterRestaurant(filterRestauraants);
             }}
           >
-            Search
+            <CiSearch />
           </button>
           <button
-            className="px-4 py-2 bg-[#FFBF78] text-white rounded-lg ml-4 hover:bg-[#FFAB60]"
+            className="px-4 py-2 bg-[#e8911f] text-white rounded-lg ml-4 hover:bg-[#e87e21]"
             onClick={() => {
               const filterList = ListofRestaurents.filter(
                 (res) => res.info.avgRating > 4
