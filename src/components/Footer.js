@@ -74,7 +74,10 @@ const Footer = () => {
         </div>
 
         <div className="mt-8 text-center">
-          <p>&copy; 2024 Swiggy. All rights reserved.</p>
+          <p>
+            &copy; 2024 Swiggy. All rights reserved. This site is for learning
+            purposes only.
+          </p>
         </div>
       </div>
     </footer>

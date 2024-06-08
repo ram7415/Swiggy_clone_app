@@ -2,11 +2,12 @@ import { useSelector } from "react-redux";
 import { clearCart } from "../utils/cartSlice";
 import ItemList from "./ItemList";
 import { useDispatch } from "react-redux";
+import cart from "./cart.png";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
 
-  console.log(cartItems);
+  // console.log(cartItems);
 
   const dispatch = useDispatch();
 
@@ -17,7 +18,7 @@ const Cart = () => {
   return (
     <div className="text-center m-4 p-4">
       <h1 className="text-2xl font-bold">Cart</h1>
-      <div className="w-6/12 m-auto">
+      <div className="w-8/12 m-auto">
         <button
           className=" p-2 m-2 bg-black text-white rounded-lg"
           onClick={handleClearCart}
@@ -25,7 +26,8 @@ const Cart = () => {
           Clear Cart
         </button>
         {cartItems?.length === 0 && (
-          <h1> Cart is empty. Add Items to the cart!</h1>
+          // <h1> Cart is empty. Add Items to the cart!</h1>
+          <img src={cart} alt="cart" className="w-8/12 m-auto" />
         )}
         <ItemList items={cartItems} />
       </div>

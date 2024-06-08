@@ -1,76 +1,28 @@
-const products = [
-  {
-    id: 1,
-    name: "Apple",
-    price: "$1.00 each",
-    img: "https://via.placeholder.com/150",
-  },
-  {
-    id: 2,
-    name: "Banana",
-    price: "$0.50 each",
-    img: "https://via.placeholder.com/150",
-  },
-  {
-    id: 3,
-    name: "Carrot",
-    price: "$0.30 each",
-    img: "https://via.placeholder.com/150",
-  },
-  {
-    id: 4,
-    name: "Tomato",
-    price: "$0.70 each",
-    img: "https://via.placeholder.com/150",
-  },
-  {
-    id: 5,
-    name: "Broccoli",
-    price: "$1.50 each",
-    img: "https://via.placeholder.com/150",
-  },
-  {
-    id: 6,
-    name: "Spinach",
-    price: "$1.00 per bunch",
-    img: "https://via.placeholder.com/150",
-  },
-];
-
 const Grocery = () => {
-  const apiData = async () => {
-    try {
-      let response = await fetch("https://fakestoreapi.com/products/1");
-      let json = await response.json();
-      console.log("son", json);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  apiData();
   return (
-    <div className="min-h-screen bg-[#FEFFD2] text-[#FF7D29]">
-      <div className="container mx-auto py-12 px-6">
-        <h1 className="text-4xl font-bold mb-6">Grocery Page</h1>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {products.map((product) => (
-            <div
-              key={product.id}
-              className="bg-[#FFEEA9] p-6 rounded-lg shadow-md"
-            >
-              <img
-                src={product.img}
-                alt={product.name}
-                className="w-full h-32 object-cover mb-4 rounded"
-              />
-              <h2 className="text-2xl font-semibold mb-2">{product.name}</h2>
-              <p className="mb-2">{product.price}</p>
-              <button className="bg-[#FF7D29] text-white px-4 py-2 rounded hover:bg-[#FF5722]">
-                Add to Cart
-              </button>
-            </div>
-          ))}
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <div className="text-center p-8 bg-white rounded shadow-lg">
+        <h1 className="text-4xl font-bold mb-4">Grocery Page</h1>
+        <p className="text-gray-700 text-lg mb-4">
+          We are currently working on this section. Stay tuned!
+        </p>
+        <div className="animate-pulse">
+          <svg
+            className="w-16 h-16 text-gray-400 mx-auto mb-4"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M3 15a4 4 0 001 7.73 4 4 0 004-1.73 4 4 0 004 1.73 4 4 0 004-1.73A4 4 0 0021 15M5 10h14M7 10a5 5 0 015-5v0a5 5 0 015 5m-4 1h-6m0 0h-1a1 1 0 100 2h1v1a1 1 0 001 1h4a1 1 0 001-1v-1h1a1 1 0 100-2h-1m-6 0v-2a2 2 0 012-2h2a2 2 0 012 2v2"
+            />
+          </svg>
         </div>
+        <p className="text-gray-500">Please check back later.</p>
       </div>
     </div>
   );

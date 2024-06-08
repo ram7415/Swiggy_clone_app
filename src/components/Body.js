@@ -7,11 +7,12 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
 import { CiSearch } from "react-icons/ci";
+import Slidercard from "./Slidercard";
 const Body = () => {
   const [ListofRestaurents, setListofRestaurents] = useState([]);
   const [searchBox, setSearchBox] = useState("");
   const [filterRestaurant, setFilterRestaurant] = useState([]);
-  console.log("list", ListofRestaurents);
+  // console.log("list", ListofRestaurents);
   const { loggedInUser } = useContext(UserContext);
 
   useEffect(() => {
@@ -41,9 +42,9 @@ const Body = () => {
   return ListofRestaurents.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body ">
-      <div className="filter flex">
-        <div className="search flex items-center m-4 p-4 bg-[#efeeeb] rounded-lg shadow-md">
+    <div className="body mx-26 ">
+      <div className="flex justify-center">
+        <div className="search flex m-4 p-4 bg-[#efeeeb] rounded-lg shadow-md">
           <input
             type="text"
             className="border border-solid border-black rounded-lg p-2 flex-grow outline-none"
@@ -75,8 +76,10 @@ const Body = () => {
           </button>
         </div>
       </div>
-      <span>Sample of usecontext-{loggedInUser}</span>
-      <div className="flex flex-wrap  ">
+
+      <span className="mx-8">Sample of usecontext-{loggedInUser}</span>
+      <div className="flex flex-wrap p-6   justify-center">
+        <Slidercard />
         {filterRestaurant.map((restaurent) => (
           <Link
             to={"/restaurants/" + restaurent.info.id}

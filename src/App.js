@@ -12,6 +12,7 @@ import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
 import Footer from "./components/Footer";
+import Profile from "./components/Profile";
 // import Grocery from "./components/Grocery";
 //Chunking
 //Lazy Loading
@@ -67,6 +68,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/Cart",
         element: <Cart />,
+      },
+      {
+        path: "/Profile",
+        element: <Profile />,
       },
       {
         path: "/Grocery",
