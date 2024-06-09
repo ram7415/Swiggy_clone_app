@@ -3,13 +3,14 @@ import RestaurentCard from "./RestaurentCard";
 // import resList from "../utils/mockData";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import Carousel from "./Carousel";
-import Shimmer from "./Shimmer";
+import Shimmer from "./shimmer/Shimmer";
+import ShimmerCard from "./shimmer/ShimmerCard";
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
 import CardCarousal from "./CardCarousal";
 import { CiSearch } from "react-icons/ci";
-import ShimmerCarouselCard from "./ShimmerCar";
+// import ShimmerCard from "./shimmer/ShimmerCard";
 
 const Body = () => {
   const [ListofRestaurents, setListofRestaurents] = useState([]);
@@ -53,8 +54,12 @@ const Body = () => {
   // if  (ListofRestaurents.length === 0){
   //   return <Shimmer />;
   // }
-  return ListofRestaurents.length === 0 ? (
-    <Shimmer />
+  return !ListofRestaurents.length ? (
+    <div className="shimmer-container">
+      <Shimmer />
+      <ShimmerCard />
+      <ShimmerCard />
+    </div>
   ) : (
     <div className="body mx-26 ">
       <div className="flex justify-center">
@@ -98,15 +103,11 @@ const Body = () => {
           </h1>
           <div className="carousel-container ">
             <div className="carousel">
-              {carouselList.length === 0 ? (
-                <CardCarousal />
-              ) : (
-                carouselList.map((item) => (
-                  <Carousel key={item.id} carData={item} />
-                ))
-              )}
+              {carouselList.map((item) => (
+                <Carousel key={item.id} carData={item} />
+              ))}
             </div>
-          </div>
+          </div>{" "}
           <hr></hr>
         </div>
         <div className=" my-2 mx-6">
@@ -129,15 +130,11 @@ const Body = () => {
           Explore curated lists of top restaurants
         </h1>
         <div className="flex flex-wrap   justify-center mx-5 p-8 h-[45vh] overflow-x-auto overflow-scroll ">
-          {newRes.length === 0 ? (
-            <CardCarousal />
-          ) : (
-            newRes.map((item) => (
-              <Link to={"/restaurants/" + item.info.id} key={item.info.id}>
-                <RestaurentCard key={item.id} resData={item} />
-              </Link>
-            ))
-          )}
+          {newRes.map((item) => (
+            <Link to={"/restaurants/" + item.info.id} key={item.info.id}>
+              <RestaurentCard key={item.id} resData={item} />
+            </Link>
+          ))}
         </div>
         <hr></hr>
 

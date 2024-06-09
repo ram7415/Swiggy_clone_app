@@ -89,3 +89,138 @@
     background-position: 200% 0;
   }
 }
+
+.img-holder-skeleton {
+  background-color: #f0f0f0;
+}
+
+.card > .img-holder > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: transparent !important;
+  z-index: 0;
+}
+
+.discount {
+  position: absolute;
+  bottom: 0;
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 0.4;
+  padding: 0.4rem 1.2rem;
+  color: #fff;
+  z-index: 2;
+  font-family: "Inter Tight", sans-serif;
+  white-space: nowrap;
+}
+
+.overlay-dark {
+  width: 100%;
+  height: 12rem;
+  background: linear-gradient(transparent, rgb(0, 0, 0));
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+}
+
+.res-content {
+  padding: 1.2rem;
+}
+.res-content-skeleton {
+  padding: 1.2rem 0;
+}
+.res-name {
+  color: #414548;
+  font-weight: 600;
+}
+.res-name-skeleton {
+  background-color: #f0f0f0;
+  height: 3.2rem;
+  width: 80%;
+  border-radius: 0.4rem;
+}
+.res-cuisine-skeleton,
+.res-location-skeleton {
+  background-color: #f0f0f0;
+  width: 80%;
+  height: 2.8rem;
+  margin-top: 1rem;
+  border-radius: 0.4rem;
+}
+.est-time {
+  padding: 0.2rem 0;
+  color: #414548;
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.6rem;
+}
+.est-time > span {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.filter {
+  display: flex;
+  gap: 1.6rem;
+}
+.filter > button {
+  padding: 0.6rem 2rem;
+  border: 1px solid rgb(226, 226, 231);
+  background-color: #fff;
+  border-radius: 4rem;
+}
+
+.shimmer-container {
+  width: 100rem;
+  margin: 0 auto;
+}
+
+.tagcard-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  padding: 1.2rem 0;
+}
+
+.tagcard-container > .card {
+  padding: 1.6rem;
+  box-sizing: border-box;
+  border: 1.5px solid rgba(2, 6, 12, 0.1);
+  border-radius: 0.8rem;
+  width: 24%;
+  height: auto;
+}
+.tagcard-container > .card > p {
+  font-size: 1.6rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.tagcard-heading {
+  font-size: 2.2rem;
+  padding-top: 2rem;
+}
+
+.tagcard {
+  padding-bottom: 4rem;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.no-res-container {
+  padding: 4rem 0;
+}
+.no-res-container > h1 {
+  color: #282c3f;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
