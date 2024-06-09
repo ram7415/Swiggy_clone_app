@@ -34,13 +34,6 @@ const RestaurantMenu = () => {
         );
       }
     );
-  const isVeg =
-    categories[0]?.card?.card?.itemCards[0]?.card?.info?.itemAttribute;
-  console.log("category", categories);
-  console.log(
-    "vegresmenu",
-    categories[0]?.card?.card?.itemCards[0]?.card?.info?.itemAttribute
-  );
   return (
     <div className="text-center ">
       <h1 className=" font-bold my-6 text-2xl">{name}</h1>
@@ -54,8 +47,9 @@ const RestaurantMenu = () => {
           key={index}
           data={category?.card?.card}
           showItems={index === showIndex ? true : false}
-          setShowIndex={() => setShowIndex(index)}
-          isVeg={category?.card?.card?.itemCards?.card?.info?.defaultPrice}
+          setShowIndex={() =>
+            showIndex === index ? setShowIndex(true) : setShowIndex(index)
+          }
         />
       ))}
     </div>

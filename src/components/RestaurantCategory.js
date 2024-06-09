@@ -1,13 +1,13 @@
 import { useState } from "react";
 import ItemList from "./ItemList";
 
-const RestaurantCategory = ({ data, showItems, setShowIndex, isVeg }) => {
+const RestaurantCategory = ({ data, showItems, setShowIndex }) => {
   const [showItem, setShowItem] = useState(false);
   // console.log(data);
 
   const handleClick = () => {
     setShowIndex();
-    setShowItem(!showItem);
+    setShowItem(!showItems);
     // console.log("showItem", showItem);
   };
 
@@ -20,10 +20,10 @@ const RestaurantCategory = ({ data, showItems, setShowIndex, isVeg }) => {
           onClick={handleClick}
         >
           <span className="font-bold text-lg">{data.title}</span>
-          <span>🔽</span>
+          <span>{showItems ? "⬆️" : "⬇️"}</span>
         </div>
         {/* accordian body */}
-        {showItems && <ItemList items={data.itemCards} />}
+        {showItem && <ItemList items={data.itemCards} />}
       </div>
     </div>
   );

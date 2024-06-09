@@ -2,17 +2,23 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import RestaurentCard from "./RestaurentCard";
 // import resList from "../utils/mockData";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import Carousel from "./Carousel";
 import Shimmer from "./Shimmer";
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
+import CardCarousal from "./CardCarousal";
 import { CiSearch } from "react-icons/ci";
-import Slidercard from "./Slidercard";
+import ShimmerCarouselCard from "./ShimmerCar";
+
 const Body = () => {
   const [ListofRestaurents, setListofRestaurents] = useState([]);
   const [searchBox, setSearchBox] = useState("");
   const [filterRestaurant, setFilterRestaurant] = useState([]);
+  const [carouselList, setCarouselList] = useState([]);
   // console.log("list", ListofRestaurents);
+  const [topRes, setTopres] = useState([]);
+  const [newRes, setNewRes] = useState([]);
   const { loggedInUser } = useContext(UserContext);
 
   useEffect(() => {
@@ -31,6 +37,14 @@ const Body = () => {
     setFilterRestaurant(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+    setCarouselList(json?.data?.cards[0]?.card?.card?.imageGridCards.info);
+    setTopres(
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setNewRes(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    console.log(json);
   };
 
   const onlineStatus = useOnlineStatus();
@@ -77,18 +91,73 @@ const Body = () => {
         </div>
       </div>
 
-      <span className="mx-8">Sample of usecontext-{loggedInUser}</span>
-      <div className="flex flex-wrap p-6   justify-center">
-        <Slidercard />
-        {filterRestaurant.map((restaurent) => (
-          <Link
-            to={"/restaurants/" + restaurent.info.id}
-            key={restaurent.info.id}
-          >
-            <RestaurentCard resData={restaurent} />
-          </Link>
-        ))}
+      <div className="flex flex-wrap p-4   justify-center">
+        <div className="mx-2">
+          <h1 className="font-bold text-2xl mb-0 text-slate-800">
+            What's on your mind?
+          </h1>
+          <div className="carousel-container ">
+            <div className="carousel">
+              {carouselList.length === 0 ? (
+                <CardCarousal />
+              ) : (
+                carouselList.map((item) => (
+                  <Carousel key={item.id} carData={item} />
+                ))
+              )}
+            </div>
+          </div>
+          <hr></hr>
+        </div>
+        <div className=" my-2 mx-6">
+          <h1 className="font-bold text-2xl  text-slate-800 mb-0 mt-4">
+            Top restaurant chains in Indore
+          </h1>
+          <div className="carousel-container ">
+            <div className="carousel">
+              {topRes.map((item) => (
+                <Link to={"/restaurants/" + item.info.id} key={item.info.id}>
+                  <CardCarousal key={item.id} cardData={item} />
+                </Link>
+              ))}
+            </div>
+          </div>{" "}
+          <hr></hr>
+        </div>
+
+        <h1 className=" text-2xl  text-slate-800 font-bold text-left m-3 ">
+          Explore curated lists of top restaurants
+        </h1>
+        <div className="flex flex-wrap   justify-center mx-5 p-8 h-[45vh] overflow-x-auto overflow-scroll ">
+          {newRes.length === 0 ? (
+            <CardCarousal />
+          ) : (
+            newRes.map((item) => (
+              <Link to={"/restaurants/" + item.info.id} key={item.info.id}>
+                <RestaurentCard key={item.id} resData={item} />
+              </Link>
+            ))
+          )}
+        </div>
+        <hr></hr>
+
+        <div className="mt-4">
+          <h1 className=" mx-28 text-2xl text-slate-800 font-bold  mt-4  ">
+            Restaurants with online food delivery in Indore
+          </h1>
+          <div className="flex flex-wrap p-6   justify-center mx-4">
+            {filterRestaurant.map((restaurent) => (
+              <Link
+                to={"/restaurants/" + restaurent.info.id}
+                key={restaurent.info.id}
+              >
+                <RestaurentCard resData={restaurent} />
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
+      <span className="mx-8">Sample of usecontext-{loggedInUser}</span>
     </div>
   );
 };
