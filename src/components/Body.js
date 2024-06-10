@@ -62,7 +62,7 @@ const Body = () => {
     </div>
   ) : (
     <div className="body mx-26 ">
-      <div className="flex justify-center">
+      {/* <div className="flex justify-center">
         <div className="search flex m-4 p-4 bg-[#efeeeb] rounded-lg shadow-md">
           <input
             type="text"
@@ -82,21 +82,10 @@ const Body = () => {
           >
             <CiSearch />
           </button>
-          <button
-            className="px-4 py-2 bg-[#e8911f] text-white rounded-lg ml-4 hover:bg-[#e87e21]"
-            onClick={() => {
-              const filterList = ListofRestaurents.filter(
-                (res) => res.info.avgRating > 4
-              );
-              setFilterRestaurant(filterList);
-            }}
-          >
-            Top Rated
-          </button>
         </div>
-      </div>
+      </div> */}
 
-      <div className="flex flex-wrap p-4   justify-center">
+      <div className="flex flex-wrap p-4 mx-2  justify-center">
         <div className="mx-2">
           <h1 className="font-bold text-2xl mb-0 text-slate-800">
             What's on your mind?
@@ -126,7 +115,7 @@ const Body = () => {
           <hr></hr>
         </div>
 
-        <h1 className=" text-2xl  text-slate-800 font-bold text-left m-3 ">
+        <h1 className=" text-2xl  text-slate-800 font-bold text-left m-3 mb-5">
           Explore curated lists of top restaurants
         </h1>
         <div className="flex flex-wrap   justify-center mx-5 p-8 h-[45vh] overflow-x-auto overflow-scroll ">
@@ -138,9 +127,20 @@ const Body = () => {
         </div>
         <hr></hr>
 
-        <div className="mt-4">
+        <div className="mt-10">
           <h1 className=" mx-28 text-2xl text-slate-800 font-bold  mt-4  ">
             Restaurants with online food delivery in Indore
+            <button
+              className="px-2 py-2 bg-[#815959] text-white rounded-lg ml-4 hover:bg-[#e87e21]"
+              onClick={() => {
+                const filterList = ListofRestaurents.filter(
+                  (res) => res.info.avgRating > 4
+                );
+                setFilterRestaurant(filterList);
+              }}
+            >
+              Top Rated
+            </button>
           </h1>
           <div className="flex flex-wrap p-6   justify-center mx-4">
             {filterRestaurant.map((restaurent) => (
