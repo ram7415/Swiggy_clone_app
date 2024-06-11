@@ -1,15 +1,17 @@
 import { useRouteError } from "react-router-dom";
+
 const Error = () => {
   const err = useRouteError();
   console.log(err);
   return (
     <div>
-      <h3>opps</h3>
-      <h4>Something went Wrong</h4>
-      <h4>
-        {err.status}:{err.statusText}
-      </h4>
+      <h1>Oops!!!</h1>
+      <h2> Something went wrong!!</h2>
+      <h3>
+        {err.status}: {err.statusText}
+      </h3>
     </div>
   );
 };
+
 export default Error;
