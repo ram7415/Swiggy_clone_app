@@ -27,27 +27,34 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      "https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.7195687&lng=75.8577258&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-    const json = await data.json();
-    console.log(json);
-    setListofRestaurents(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setFilterRestaurant(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setCarouselList(json?.data?.cards[0]?.card?.card?.imageGridCards.info);
-    setTopres(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setNewRes(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    console.log(json);
+    try {
+      const response = await fetch(
+        "https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.7195687&lng=75.8577258&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      );
+      const data = await response.json();
+      setListofRestaurents(
+        data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants || []
+      );
+      setFilterRestaurant(
+        data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants || []
+      );
+      setCarouselList(
+        data?.data?.cards[0]?.card?.card?.imageGridCards.info || []
+      );
+      setTopres(
+        data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants || []
+      );
+      setNewRes(
+        data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants || []
+      );
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
-
   const onlineStatus = useOnlineStatus();
   if (onlineStatus === false) return <h1>No Internet Connection</h1>;
   ///this is condtional rendering
@@ -62,29 +69,6 @@ const Body = () => {
     </div>
   ) : (
     <div className="body mx-26 ">
-      {/* <div className="flex justify-center">
-        <div className="search flex m-4 p-4 bg-[#efeeeb] rounded-lg shadow-md">
-          <input
-            type="text"
-            className="border border-solid border-black rounded-lg p-2 flex-grow outline-none"
-            placeholder="Search restaurants..."
-            value={searchBox}
-            onChange={(e) => setSearchBox(e.target.value)}
-          />
-          <button
-            className="px-4 py-2 text-xl bg-[#ffffff] text-black rounded-lg ml-4 hover:bg-[#dccbc6] hover:text-2xl"
-            onClick={() => {
-              const filterRestauraants = ListofRestaurents.filter((res) =>
-                res.info.name.toLowerCase().includes(searchBox.toLowerCase())
-              );
-              setFilterRestaurant(filterRestauraants);
-            }}
-          >
-            <CiSearch />
-          </button>
-        </div>
-      </div> */}
-
       <div className="flex flex-wrap p-4 mx-2  justify-center">
         <div className="mx-2">
           <h1 className="font-bold text-2xl mb-0 text-slate-800">
@@ -96,7 +80,7 @@ const Body = () => {
                 <Carousel key={item.id} carData={item} />
               ))}
             </div>
-          </div>{" "}
+          </div>
           <hr></hr>
         </div>
         <div className=" my-2 mx-6">
@@ -111,7 +95,7 @@ const Body = () => {
                 </Link>
               ))}
             </div>
-          </div>{" "}
+          </div>
           <hr></hr>
         </div>
 

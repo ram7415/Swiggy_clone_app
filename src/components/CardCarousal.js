@@ -1,7 +1,7 @@
 import { CDN_URL } from "../utils/constants";
 const CardCarousel = ({ cardData }) => {
   console.log(cardData);
-  data = cardData?.info;
+  data = cardData?.info || {};
   return (
     <>
       <div className=" carousel-card2 mx-2 w-[250px] h-[270px] bg-[#fcfcfc] rounded-xl hover:bg-[#f5f5f3] shadow-slate-20 transition-transform duration-300 transform hover:scale-95 py-1 overflow-hidden mb-4">
