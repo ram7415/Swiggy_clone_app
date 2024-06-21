@@ -92,3 +92,4 @@ import {Component} from "path";
 - Include @babel/preset-react inside my babel config
 - npm i -D @testing-library/jest-dom
 - the project is almost completed
+- need to deploy on own proxy server for live
