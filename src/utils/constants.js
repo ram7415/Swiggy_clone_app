@@ -5,7 +5,7 @@ export const LOGO_URL =
   "https://image.shutterstock.com/image-vector/chef-logo-design-restaurant-260nw-2139040385.jpg ";
 
 export const Resid_URL =
-  "https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=22.7195687&lng=75.8577258&restaurantId=";
+  "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=22.7195687&lng=75.8577258&restaurantId=";
 
 export const SWIGGY_LOGO_URL =
   "https://1000logos.net/wp-content/uploads/2021/05/Swiggy-emblem.png";
