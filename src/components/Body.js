@@ -80,7 +80,7 @@ console.log();
           <div className="carousel-container ">
             <div className="carousel">
               {carouselList.map((item) => (
-                <Carousel key={item.id} carData={item} />
+                <Carousel key={item.id} cardData={item} />
               ))}
             </div>
           </div>
