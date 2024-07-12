@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
 import CardCarousal from "./CardCarousal";
 import { CiSearch } from "react-icons/ci";
+import mockResListData from "../components/mocks/mockResListData.json"
 // import ShimmerCard from "./shimmer/ShimmerCard";
 
 const Body = () => {
@@ -21,17 +22,19 @@ const Body = () => {
   const [topRes, setTopres] = useState([]);
   const [newRes, setNewRes] = useState([]);
   const { loggedInUser } = useContext(UserContext);
-
+console.log('mock',mockResListData);
   useEffect(() => {
     fetchData();
   }, []);
-
+console.log();
   const fetchData = async () => {
     try {
       const response = await fetch(
         "https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.7195687&lng=75.8577258&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
       );
-      const data = await response.json();
+      // const data = await response.json();
+      const data =mockResListData
+      console.log('data', data)
       setListofRestaurents(
         data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants || []
