@@ -1,7 +1,7 @@
 import { SWIGGY_CAROUSEL_URL } from "../utils/constants";
 
-const Carousel = ({ carData }) => {
-  const { imageId } = carData;
+const Carousel = ({ cardData }) => {
+  const { imageId } = cardData;
   if (!imageId) {
     return null; // Or return a placeholder image or an empty div
   }
