@@ -93,3 +93,4 @@ import {Component} from "path";
 - npm i -D @testing-library/jest-dom
 - the project is almost completed
 - need to deploy on own proxy server for live
+- need to correct the api
